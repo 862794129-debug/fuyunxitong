@@ -1,0 +1,232 @@
+{
+  "rules_version": "supplements-v0.2",
+  "rules_date": "2026-10-16",
+  "status": "STARTER LIST - not calibrated on real rejection data, not legal advice. Must be reviewed by the compliance owner and calibrated weekly with platform outcomes.",
+  "categories": [
+    "夸大/减重/财务效果声明",
+    "医疗/药品/限制行业",
+    "健康信息责任表达",
+    "产品信息误导/不准确",
+    "羞辱身材/欺凌/仇恨表达"
+  ],
+  "rules": [
+    {
+      "id": "EXG-001",
+      "category": "夸大/减重/财务效果声明",
+      "severity": "red",
+      "description": "Guaranteed / miracle / instant-result style claims",
+      "patterns": [
+        "\\bguarantee[sd]?\\b",
+        "\\b100\\s*%\\s*(effective|results?|guaranteed|works)\\b",
+        "\\bmiracle\\b",
+        "\\binstant(ly)?\\s+(results?|relief|cure|detox)\\b",
+        "\\bovernight\\s+(results?|transformation)\\b",
+        "保证|包治|神奇|立竿见影|百分之百有效|100%有效"
+      ],
+      "message": "Absolute or guaranteed-result wording.",
+      "suggestion": "删除保证/奇迹/立竿见影类表述；不承诺具体效果或时间。"
+    },
+    {
+      "id": "EXG-002",
+      "category": "夸大/减重/财务效果声明",
+      "severity": "red",
+      "description": "Weight-loss claims",
+      "patterns": [
+        "\\b(lose|losing|lost|drop|shed)\\s+(\\d+\\s*)?(lbs?|pounds?|kg|weight|fat|inches)\\b",
+        "\\bweight[- ]?loss\\b",
+        "\\bfat[- ]?(burn|burning|melt)\\w*",
+        "\\bburn(s|ing)?\\s+(belly\\s+|body\\s+)?(fat|calories)\\b",
+        "\\bslim(ming)?\\s+down\\b",
+        "减肥|瘦身|减脂|燃脂|减重|瘦\\d+斤"
+      ],
+      "message": "Weight-loss claim; weight-management ads are heavily restricted by the platform.",
+      "suggestion": "删除减重/燃脂/体重变化表述；该类内容需先核对平台对体重管理类广告的最新限制。"
+    },
+    {
+      "id": "EXG-003",
+      "category": "夸大/减重/财务效果声明",
+      "severity": "yellow",
+      "description": "Before/after or dramatic transformation framing",
+      "patterns": [
+        "\\bbefore\\s*(and|&|/|vs\\.?)\\s*after\\b",
+        "\\btransformation\\b",
+        "前后对比|对比图|变化惊人"
+      ],
+      "message": "Before/after framing can imply guaranteed results.",
+      "suggestion": "避免用前后对比暗示效果；如保留，须有真实依据并由合规负责人确认。"
+    },
+    {
+      "id": "EXG-004",
+      "category": "夸大/减重/财务效果声明",
+      "severity": "red",
+      "description": "Financial-result claims",
+      "patterns": [
+        "\\bget\\s+rich\\b",
+        "\\bpassive\\s+income\\b",
+        "\\bmake\\s+\\$\\s?\\d[\\d,]*(\\s*(a|per)\\s*(day|week|month))?",
+        "躺赚|月入\\d+|日入\\d+"
+      ],
+      "message": "Financial-result or income claim.",
+      "suggestion": "删除收益承诺类表述。"
+    },
+    {
+      "id": "MED-001",
+      "category": "医疗/药品/限制行业",
+      "severity": "red",
+      "description": "Claims to cure, treat, prevent or reverse a disease or condition",
+      "patterns": [
+        "\\b(cure[sd]?|cures|treat(s|ed|ing|ment)?|heal(s|ed|ing)?|reverse[sd]?|reversing|prevent(s|ed|ing)?)\\b.{0,40}\\b(disease|cirrhosis|fatty liver|hepatitis|cancer|diabetes|liver (damage|disease|failure)|infection|inflammation|arthritis|thyroid|condition)\\b",
+        "治疗|治愈|根治|逆转|预防.{0,6}(疾病|肝病|癌)|脂肪肝|肝硬化|肝炎|肝癌"
+      ],
+      "message": "Disease treatment/cure/prevention claim.",
+      "suggestion": "删除疾病、症状、治疗、逆转类表述；补剂广告不得作医疗宣称。"
+    },
+    {
+      "id": "MED-002",
+      "category": "医疗/药品/限制行业",
+      "severity": "red",
+      "description": "Replacing or comparing to medication / discouraging medical care",
+      "patterns": [
+        "\\b(instead of|replace[sd]?|replacement for|better than|alternative to)\\b.{0,30}\\b(medication|medicine|prescriptions?|drugs?|doctors?)\\b",
+        "\\bstop\\s+taking\\s+(your\\s+)?(meds|medication|medicine|pills)\\b",
+        "替代药物|不用吃药|停药|比药好|不用去医院"
+      ],
+      "message": "Implies replacing medication or professional care.",
+      "suggestion": "删除与药物对比、替代药物、劝阻就医的表述。"
+    },
+    {
+      "id": "MED-003",
+      "category": "医疗/药品/限制行业",
+      "severity": "red",
+      "description": "Organ repair / regeneration claims",
+      "patterns": [
+        "\\b(repair(s|ed|ing)?|regenerat\\w*|rebuild(s|ing)?|restore[sd]?)\\b.{0,30}\\b(liver|kidney|lungs?|thyroid|organs?)\\b",
+        "修复(肝|肾|肺|甲状腺|器官)|再生|肝细胞"
+      ],
+      "message": "Organ repair/regeneration claim.",
+      "suggestion": "删除器官修复/再生类表述。"
+    },
+    {
+      "id": "MED-004",
+      "category": "医疗/药品/限制行业",
+      "severity": "yellow",
+      "description": "Detox / cleanse / toxin-removal wording",
+      "patterns": [
+        "\\b(detox(ify|ification)?|cleanse[sd]?|cleansing|flush(es|ed)?\\s+(out\\s+)?toxins?|toxins?)\\b",
+        "排毒|解毒|清除毒素|清肝|毒素"
+      ],
+      "message": "Detox/toxin wording is an organ-function claim that is frequently flagged.",
+      "suggestion": "避免排毒/毒素类表述；如保留须有依据并由合规负责人确认。"
+    },
+    {
+      "id": "MED-005",
+      "category": "医疗/药品/限制行业",
+      "severity": "yellow",
+      "description": "Symptom or diagnosis hooks aimed at the viewer",
+      "patterns": [
+        "\\b(do you have|are you suffering (from)?|signs of|symptoms of|diagnos\\w*)\\b",
+        "你是不是有.{0,10}(症状|问题)|出现这些症状|症状"
+      ],
+      "message": "Diagnosing or hooking on symptoms can be read as a medical claim.",
+      "suggestion": "避免对观众做症状暗示或诊断式提问。"
+    },
+    {
+      "id": "MED-006",
+      "category": "医疗/药品/限制行业",
+      "severity": "red",
+      "description": "Impersonating a health professional",
+      "patterns": [
+        "\\b(i'?m\\s+a|i\\s+am\\s+a|as\\s+a)\\s+(doctor|dr\\.?|nurse|pharmacist|physician|hepatologist|nutritionist)\\b",
+        "我是(医生|医师|药剂师|护士|营养师)|作为(医生|医师|药剂师)"
+      ],
+      "message": "Presenting a speaker as a health professional.",
+      "suggestion": "不得让演员/虚拟人物冒充医疗专业人士；如为真实持证人员，须有授权与证明并由合规负责人确认。"
+    },
+    {
+      "id": "MED-007",
+      "category": "医疗/药品/限制行业",
+      "severity": "red",
+      "description": "Approval / proof claims",
+      "patterns": [
+        "\\bfda[- ]?(approved|cleared|certified)\\b",
+        "\\b(clinically|scientifically|medically)\\s+proven\\b",
+        "临床证明|临床验证|FDA认证|FDA批准|科学证实"
+      ],
+      "message": "Approval or proof claim that must be substantiated and is often not allowed for supplements.",
+      "suggestion": "删除批准/临床证明类表述，除非有可核实依据并由合规负责人确认。"
+    },
+    {
+      "id": "MED-008",
+      "category": "医疗/药品/限制行业",
+      "severity": "yellow",
+      "description": "Authority appeals ('doctors recommend')",
+      "patterns": [
+        "\\bdoctors?\\s+(recommend|say|love|don'?t want you)\\b",
+        "医生推荐|医生都说|医生不想让你知道"
+      ],
+      "message": "Authority appeal requires substantiation.",
+      "suggestion": "避免泛指式权威背书；如保留须有可核实依据。"
+    },
+    {
+      "id": "MED-009",
+      "category": "医疗/药品/限制行业",
+      "severity": "yellow",
+      "description": "Personal health-condition testimonial (medical history, lab values, diagnosis)",
+      "patterns": [
+        "\\bmy\\s+(doctor|physician|specialist)\\s+(told|said|diagnosed|warned)\\b",
+        "\\b(i\\s+was|i\\s+got|been|was|were)\\s+diagnosed\\b",
+        "\\b(liver\\s+enzymes?|blood\\s+(sugar|pressure)|cholesterol|A1C)\\b.{0,25}\\b(high|elevated|normal|improved|dropped|lower(ed)?|back\\s+to)\\b",
+        "医生(跟|对)?我说|被诊断|转氨酶|血糖.{0,6}(高|降)|血压.{0,6}(高|降)"
+      ],
+      "message": "Personal medical history or lab-value testimonial implies the product acts on a medical condition.",
+      "suggestion": "删除个人病史、检查指标、诊断经历及其改善的叙述；见证内容不得暗示治疗效果。"
+    },
+    {
+      "id": "MIS-001",
+      "category": "产品信息误导/不准确",
+      "severity": "yellow",
+      "description": "Unsupported absolute safety claims",
+      "patterns": [
+        "\\b(no|zero|without any)\\s+side[- ]effects?\\b",
+        "\\bsafe\\s+for\\s+everyone\\b",
+        "\\b100\\s*%\\s*safe\\b",
+        "无副作用|零副作用|人人适用|绝对安全"
+      ],
+      "message": "Unsupported absolute safety claim.",
+      "suggestion": "删除绝对化的安全性表述。"
+    },
+    {
+      "id": "BODY-001",
+      "category": "羞辱身材/欺凌/仇恨表达",
+      "severity": "red",
+      "description": "Body-shaming wording",
+      "patterns": [
+        "\\b(disgusting|ugly|gross)\\s+(belly|body|fat|stomach|legs|arms)\\b",
+        "\\bfat\\s+(shaming|pig|cow)\\b",
+        "肥猪|恶心的(肚子|身材|赘肉)|丑"
+      ],
+      "message": "Shaming body-image wording.",
+      "suggestion": "删除羞辱身材或制造身材焦虑的表述。"
+    }
+  ],
+  "context_rules": [
+    {
+      "id": "INF-001",
+      "category": "健康信息责任表达",
+      "severity": "yellow",
+      "description": "Health-benefit wording present but no responsible-information wording found",
+      "trigger_patterns": [
+        "\\b(supports?|promotes?|helps?|boosts?|improves?)\\b.{0,30}\\b(health|liver|immune|digestion|joint|energy|sleep|metabolism)\\b",
+        "支持.{0,6}(健康|肝|免疫|消化|关节)|有助于"
+      ],
+      "absent_patterns": [
+        "\\bconsult\\s+(your\\s+)?(doctor|physician|healthcare)\\b",
+        "\\bnot\\s+intended\\s+to\\s+(diagnose|treat|cure|prevent)\\b",
+        "\\bresults\\s+may\\s+vary\\b",
+        "咨询医生|不用于诊断|因人而异"
+      ],
+      "message": "Health-benefit wording found but no responsible-information wording detected. The exact platform/regulatory requirement is NOT VERIFIED here.",
+      "suggestion": "请核对平台与法规对健康信息提示的具体要求（待核实），并由合规负责人确认是否需要补充。"
+    }
+  ]
+}

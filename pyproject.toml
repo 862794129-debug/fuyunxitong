@@ -1,0 +1,8 @@
+[project]
+name = "creative-studio"
+version = "0.1.0"
+description = "AI Creative Studio - compliance pre-check slice (stdlib only)"
+requires-python = ">=3.10"
+
+[tool.setuptools.package-data]
+"creative_studio.compliance" = ["rules/*.json"]
